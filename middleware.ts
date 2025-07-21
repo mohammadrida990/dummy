@@ -7,7 +7,6 @@ export function middleware(req: NextRequest) {
   const isProtected = protectedPaths.some(
     (path) => req.nextUrl.pathname === path
   );
-  console.log(isProtected && !token);
 
   if (isProtected && !token) {
     const signInUrl = new URL("/auth/signin", req.url);
@@ -18,5 +17,5 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/", "/dashboard/:path*"], // Add more protected paths here
+  matcher: ["/"],
 };
